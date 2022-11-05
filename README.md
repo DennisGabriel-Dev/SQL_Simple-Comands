@@ -136,7 +136,7 @@ ALTER TABLE nomeDaTabela ADD COLUMN nova_coluna VARCHAR(20) , nova_coluna2 FLOAT
 #criamos duas colunas , uma q recebe texto e outra que recebe número inteiro
 ```
 
-#### IMPORTANTE! Copie tudo desse trecho, irei demonstrar uma coisa interessante mais a frente.
+#### IMPORTANTE! Copie e execute tudo desse trecho, irei demonstrar uma coisa interessante mais a frente.
 ```SQL
 INSERT INTO nomeDaTabela(NOME,ENDERECO,IDADE,FUNCIONARIO,NASCIMENTO,nova_coluna,nova_coluna2)
 VALUES("Karol","Rio De Janeiro",21,0,"01-01-2001","teste",20.00);
