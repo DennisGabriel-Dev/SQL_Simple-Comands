@@ -174,3 +174,8 @@ ALTER TABLE nomeDaTabela CHANGE nova_coluna Tipo_de_Conta VARCHAR(20) , CHANGE n
 /* Excelente, agora mudamos o nome das colunas: nova_coluna e nova_coluna2 de forma "permanente" através da palavra CHANGE.
 */
 ```
+
+START TRANSACTION -  #Cria um ponto de estado do banco de dados. 
+COMMIT -  Confirma todas as operações entre START TRANSACTION e o commit COMMIT. Todos os INSERTS, UPDATES OU DELETES irão ser confirmados e gravados na base
+ROLLBACK: Tudo que foi feito entre o START TRANSACTION e o ROLLBACK será desprezado e os dados voltarão ao status de quando o START TRANSACTION foi executado 
+
