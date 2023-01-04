@@ -182,7 +182,7 @@ ROLLBACK: Tudo que foi feito entre o START TRANSACTION e o ROLLBACK será despre
 ```
 
 ## TRIGGER
-O Trigger serve para "automatizarmos" comportamentos, exemplo: caso desejarmos calular determinado faturamento de uma tabela(tb_faturamento) a medida que incrementarmos elementos em outra tabela(tb_notas_da_empresa). Pela lógica, a medida que incrementarmos valores em tb_notas_da_empresa, a base de dados tb_faturamento sofrerá alterações no faturamento.
+O Trigger serve para "automatizarmos" comportamentos, exemplo: caso desejarmos calular determinado faturamento de uma tabela(tb_faturamento) ,a medida que incrementamos elementos em outra tabela(tb_notas_da_empresa). Pela lógica, a medida que incrementamos elementos em tb_notas_da_empresa, a base de dados tb_faturamento sofrerá alterações no faturamento.
 
 Suponha que tenhamos criado uma tabela(tb_notas_da_empresa) com seus respectivos campos, da seguiente forma e depois coloquemos elementos dentro dessa tabela:
 
@@ -212,4 +212,5 @@ FOR EACH ROW BEGIN
 		GROUP BY DATA_DA_VENDA;
 END//
 ```
-Assim que colocarmos inserirmos dados na tabela de notas (TB_NOTAS_DA_EMPRESA), AUTOMATICAMENTE SERÁ ACRECENTADO NA TABELA DE FATURAMENTO (TB_FATURAMENTO)
+Assim que colocarmos ou inserirmos dados na tabela de notas (TB_NOTAS_DA_EMPRESA), AUTOMATICAMENTE será alterado a tabela de faturamento (TB_FATURAMENTO), 
+graças ao trigger, em que o mesmo tira a necessidade de repertimos o mesmo código várias vezes no nosso dia a dia para tarefas simples como essa.
