@@ -180,3 +180,36 @@ START TRANSACTION #Cria um ponto de estado do banco de dados.
 COMMIT  #Confirma todas as operações entre START TRANSACTION e o commit COMMIT. Todos os INSERTS, UPDATES OU DELETES irão ser confirmados e gravados na base
 ROLLBACK: Tudo que foi feito entre o START TRANSACTION e o ROLLBACK será desprezado e os dados voltarão ao status de quando o START TRANSACTION foi executado 
 ```
+
+##TRIGGER
+O Trigger serve para "automatizarmos" comportamentos, exemplo: caso desejarmos calular determinado faturamento de uma tabela(tb_faturamento) a medida que incrementarmos elementos em outra tabela(tb_notas_da_empresa). Pela lógica, a medida que incrementarmos valores em notas a base de dados tb_faturamento sofrerá alterações no faturamento.
+
+Suponha que tenhamos criado uma tabela(tb_notas_da_empresa) com seus respectivos campos, da seguiente forma e depois coloquemos elementos dentro dessa tabela:
+
+```SQL 
+CREATE TABLE TB_NOTAS_DA_EMPRESA 
+(NUMERO INT, MATRICULA VARCHAR(5), QUANTIDADE INT,PRECO FLOAT, DATA_DA_VENDA DATE);
+
+INSERT INTO TB_NOTAS_DA_EMPRESA 
+(NUMERO, MATRICULA, QUANTIDADE, PRECO , DATA_DA_VENDA)
+VALUES
+(100, '00001', 100, 10, '2023-01-03');
+```
+Depois criamos  a tabela que será armazenado o faturamento
+```SQL
+CREATE TABLE TB_FATURAMENTO
+(DATA_DA_VENDA DATE, FATURAMENTO FLOAT);
+```
+
+Agora , veja abaixo como criar um TRIGGER:
+```SQL
+DELIMITER //
+CREATE TRIGGER TG_CALCULA_FATURAMENTO_A_CADA_INSERT AFTER INSERT ON TB_NOTAS_DA_EMPRESA
+FOR EACH ROW BEGIN 
+	DELETE FROM TB_FATURAMENTO;
+    	INSERT INTO TB_FATURAMENTO
+		SELECT DATA_DA_VENDA,  SUM(QUANTIDADE * PRECO) FROM TB_NOTAS_DA_EMPRESA
+		GROUP BY DATA_DA_VENDA;
+END//
+```
+Assim que colocarmos inserirmos dados na tabela de notas (TB_NOTAS_DA_EMPRESA), AUTOMATICAMENTE SERÁ ACRECENTADO NA TABELA DE FATURAMENTO (TB_FATURAMENTO)
