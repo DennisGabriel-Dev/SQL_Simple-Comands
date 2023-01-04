@@ -181,8 +181,8 @@ COMMIT  #Confirma todas as operações entre START TRANSACTION e o commit COMMIT
 ROLLBACK: Tudo que foi feito entre o START TRANSACTION e o ROLLBACK será desprezado e os dados voltarão ao status de quando o START TRANSACTION foi executado 
 ```
 
-##TRIGGER
-O Trigger serve para "automatizarmos" comportamentos, exemplo: caso desejarmos calular determinado faturamento de uma tabela(tb_faturamento) a medida que incrementarmos elementos em outra tabela(tb_notas_da_empresa). Pela lógica, a medida que incrementarmos valores em notas a base de dados tb_faturamento sofrerá alterações no faturamento.
+## TRIGGER
+O Trigger serve para "automatizarmos" comportamentos, exemplo: caso desejarmos calular determinado faturamento de uma tabela(tb_faturamento) a medida que incrementarmos elementos em outra tabela(tb_notas_da_empresa). Pela lógica, a medida que incrementarmos valores em tb_notas_da_empresa, a base de dados tb_faturamento sofrerá alterações no faturamento.
 
 Suponha que tenhamos criado uma tabela(tb_notas_da_empresa) com seus respectivos campos, da seguiente forma e depois coloquemos elementos dentro dessa tabela:
 
